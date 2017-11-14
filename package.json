@@ -3,7 +3,8 @@
   "version": "1.1.0",
   "description": "Clear private data related to the current tab.",
   "scripts": {
-    "zip": "sh scripts/zip.sh"
+    "zip": "sh scripts/zip.sh",
+    "postversion": "git push && git push --tags"
   },
   "homepage": "https://addons.mozilla.org/firefox/addon/clear-private-data-now",
   "bugs": {
