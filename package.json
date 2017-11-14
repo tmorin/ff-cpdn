@@ -1,0 +1,21 @@
+{
+  "name": "ff-cpdn",
+  "version": "1.1.0",
+  "description": "Clear private data related to the current tab.",
+  "scripts": {
+    "zip": "sh scripts/zip.sh"
+  },
+  "homepage": "https://addons.mozilla.org/firefox/addon/clear-private-data-now",
+  "bugs": {
+    "url": "https://github.com/tmorin/ff-cpdn/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tmorin/ff-cpdn.git"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Thibault Morin",
+    "url": "https://tmorin.github.io"
+  }
+}
