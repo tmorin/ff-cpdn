@@ -4,3 +4,5 @@
 
 - cookies
 - localStorage
+- sessionStorage
+- serviceWorker

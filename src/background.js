@@ -7,30 +7,37 @@ function logError(error) {
 }
 
 function cleanCookies(tab) {
-    browser.cookies.getAll({
+    console.info('cleanCookies', tab.url);
+    return browser.cookies.getAll({
         url: tab.url
     }).then(function (cookies) {
-        for (let cookie of cookies) {
-            browser.cookies.remove({
-                url: tab.url,
+        console.log('cookies', cookies.length);
+        return cookies.map(function (cookie) {
+            console.log('cookie', cookie);
+            return browser.cookies.remove({
                 name: cookie.name,
-                storeId: cookie.storeId
-            }).then(logInfo, logError);
-        }
+                url: tab.url
+            }).then(logInfo, logError)
+        });
     }, logError);
 }
 
-function cleanStorage(tab) {
-    browser.tabs.executeScript({
-        code: 'localStorage.clear()'
+function executeTabCleaner(tab) {
+    console.info('executeTabCleaner', tab.url);
+    return browser.tabs.executeScript({
+        file: 'tab-cleaner.js'
     }).then(logInfo, logError);
 }
 
 function cleanTabs(tabs) {
-    tabs.forEach(function (tab) {
-        cleanCookies(tab);
-        cleanStorage(tab);
-    });
+    return Promise.all(
+        tabs.map(function (tab) {
+            return Promise.all([
+                cleanCookies(tab),
+                executeTabCleaner(tab)
+            ]);
+        })
+    );
 }
 
 browser.browserAction.onClicked.addListener(function () {
