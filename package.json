@@ -4,7 +4,8 @@
   "description": "Clear private data related to the current tab.",
   "scripts": {
     "zip": "sh scripts/zip.sh",
-    "release": "standard-version",
+    "release": "standard-version -a",
+    "postrelease": "git push --follow-tags",
     "watch": "web-ext run -s src"
   },
   "homepage": "https://addons.mozilla.org/firefox/addon/clear-private-data-now",
@@ -19,6 +20,13 @@
   "author": {
     "name": "Thibault Morin",
     "url": "https://tmorin.github.io"
+  },
+  "standard-version": {
+    "scripts": {
+      "postbump": "node ./scripts/postbump.js > postbump.log",
+      "precommit": "git add -A",
+      "posttag": "npm run zip"
+    }
   },
   "devDependencies": {
     "standard-version": "^4.4.0",
