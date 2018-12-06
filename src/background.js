@@ -1,48 +1,40 @@
-function logInfo(result) {
-    console.info(result);
-}
+async function cleanCookies(tab) {
+    console.info('cleanCookies -', tab.url);
 
-function logError(error) {
-    console.error(error);
-}
-
-function cleanCookies(tab) {
-    console.info('cleanCookies', tab.url);
-    return browser.cookies.getAll({
+    const cookies = await browser.cookies.getAll({
         url: tab.url
-    }).then(function (cookies) {
-        console.log('cookies', cookies.length);
-        return cookies.map(function (cookie) {
-            console.log('cookie', cookie);
-            return browser.cookies.remove({
-                name: cookie.name,
-                url: tab.url
-            }).then(logInfo, logError)
+    });
+
+    console.log('cleanCookies -', 'discovered cookies', cookies.length);
+
+    await Promise.all(cookies.map(async cookie => {
+        console.log('cleanCookies -', 'clean cookie', cookie);
+        await browser.cookies.remove({
+            name: cookie.name,
+            url: tab.url
         });
-    }, logError);
+    }));
 }
 
-function executeTabCleaner(tab) {
-    console.info('executeTabCleaner', tab.url);
-    return browser.tabs.executeScript({
+async function executeTabCleaner(tab) {
+    console.info('executeTabCleaner -', tab.url);
+    await browser.tabs.executeScript(tab.id, {
         file: 'tab-cleaner.js'
-    }).then(logInfo, logError);
+    });
 }
 
-function cleanTabs(tabs) {
-    return Promise.all(
-        tabs.map(function (tab) {
-            return Promise.all([
-                cleanCookies(tab),
-                executeTabCleaner(tab)
-            ]);
-        })
-    );
+async function cleanTabs(tabs) {
+    await Promise.all(tabs.map(tab => {
+        return Promise.all([
+            cleanCookies(tab),
+            executeTabCleaner(tab)
+        ]);
+    }));
 }
 
 browser.browserAction.onClicked.addListener(function () {
     browser.tabs.query({
         currentWindow: true,
         active: true
-    }).then(cleanTabs, logError);
+    }).then(cleanTabs).catch(error => console.error(error.message, error));
 });
