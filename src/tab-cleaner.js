@@ -1,13 +1,21 @@
 (async function () {
 
     if ('localStorage' in window) {
-        console.info('clear localStorage');
-        localStorage.clear();
+        try {
+            console.info('clear localStorage');
+            localStorage.clear();
+        } catch (e) {
+            console.error('unable to clear local storage', e);
+        }
     }
 
     if ('sessionStorage' in window) {
-        console.info('clear sessionStorage');
-        sessionStorage.clear();
+        try {
+            console.info('clear sessionStorage');
+            sessionStorage.clear();
+        } catch (e) {
+            console.error('unable to clear session storage', e);
+        }
     }
 
     if (!'indexedDB' in window) {
