@@ -11,6 +11,7 @@ async function cleanCookies(tab) {
         console.log('cleanCookies -', 'clean cookie', cookie);
         await browser.cookies.remove({
             name: cookie.name,
+            storeId: cookie.storeId,
             url: tab.url
         });
     }));
