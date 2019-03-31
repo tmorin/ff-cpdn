@@ -1,6 +1,5 @@
 async function cleanCookies(tab) {
     console.info('cleanCookies -', tab.url, tab.cookieStoreId);
-    console.info(tab);
 
     let cookieStoreId = tab.cookieStoreId;
     try {
@@ -49,13 +48,22 @@ async function executeTabCleaner(tab) {
     });
 }
 
+async function displayNotification() {
+    browser.notifications.create({
+        "type": "basic",
+        "iconUrl": browser.extension.getURL("icons/cpdn-128x128.png"),
+        "title": "Clear private data now!",
+        "message": "The cleaning has been done."
+    });
+}
+
 async function cleanTabs(tabs) {
     await Promise.all(tabs.map(tab => {
         return Promise.all([
             cleanCookies(tab),
             executeTabCleaner(tab)
         ]);
-    }));
+    })).finally(displayNotification);
 }
 
 browser.browserAction.onClicked.addListener(function () {

@@ -10,10 +10,11 @@
   },
   "permissions": [
     "<all_urls>",
-    "tabs",
-    "cookies",
+    "activeTab",
     "contextualIdentities",
-    "activeTab"
+    "cookies",
+    "notifications",
+    "tabs"
   ],
   "background": {
     "scripts": [
