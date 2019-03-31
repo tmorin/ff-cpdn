@@ -1,5 +1,6 @@
 async function cleanCookies(tab) {
     console.info('cleanCookies -', tab.url, tab.cookieStoreId);
+    console.info(tab);
 
     let cookieStoreId = tab.cookieStoreId;
     try {
@@ -8,22 +9,35 @@ async function cleanCookies(tab) {
         console.info(contextualIdentity);
         console.info('cleanCookies - contextual identity available', contextualIdentity.cookieStoreId);
     } catch (e) {
-        console.debug("cleanCookies - no contextual identity available")
+        console.debug('cleanCookies - no contextual identity available')
     }
 
-    const cookies = await browser.cookies.getAll({
-        url: tab.url,
+    // get all cookie related to the tab's cookie store
+    const allCookies = await browser.cookies.getAll({
         storeId: cookieStoreId
     });
 
-    console.log('cleanCookies -', 'discovered cookies', cookies.length);
+    // get tab's URL info
+    const url = new URL(tab.url);
+    const parts = url.hostname.split('.');
+    for (let i = parts.length; i > 2; i--) {
+        parts.shift();
+    }
+    const domain = parts.join('.');
+
+    // keep only cookies related to tab's domain
+    const cookies = allCookies.filter(c => c.domain.endsWith(domain));
+
+    console.log('cleanCookies - discovered [%s] cookies for domain [%s]', cookies.length, domain);
 
     await Promise.all(cookies.map(async cookie => {
-        console.debug('cleanCookies -', 'clean cookie', cookie);
+        // forge cookie's URL from tab's origin and cookie's path
+        const cookieUrl = `${url.origin}${cookie.path}`;
+        console.debug('cleanCookies - clean cookie [%s|%s|%s] with url [%s]', cookie.name, cookie.domain, cookie.path, cookieUrl);
         await browser.cookies.remove({
             name: cookie.name,
             storeId: cookieStoreId,
-            url: tab.url
+            url: cookieUrl
         });
     }));
 }
