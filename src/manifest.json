@@ -13,20 +13,19 @@
     "activeTab",
     "contextualIdentities",
     "cookies",
-    "notifications",
-    "tabs"
+    "tabs",
+    "storage"
   ],
-  "background": {
-    "scripts": [
-      "background.js"
-    ]
+  "options_ui": {
+    "page": "options.html"
   },
   "browser_action": {
     "default_icon": {
-      "24": "buttons/cpdn-24x24.png",
-      "48": "buttons/cpdn-48x48.png",
-      "128": "buttons/cpdn-128x128.png"
+      "24": "icons/cpdn-24x24.png",
+      "48": "icons/cpdn-48x48.png",
+      "128": "icons/cpdn-128x128.png"
     },
-    "default_title": "Clear private data now!"
+    "default_title": "Clear private data now!",
+    "default_popup": "popup.html"
   }
 }

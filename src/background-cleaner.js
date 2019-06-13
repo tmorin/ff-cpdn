@@ -48,28 +48,11 @@ async function executeTabCleaner(tab) {
     });
 }
 
-async function displayNotification() {
-    browser.notifications.create({
-        "type": "basic",
-        "iconUrl": browser.extension.getURL("icons/cpdn-128x128.png"),
-        "title": "Clear private data now!",
-        "message": "The cleaning has been done."
-    });
-}
-
-async function cleanTabs(tabs) {
+export async function cleanTabs(tabs) {
     await Promise.all(tabs.map(tab => {
         return Promise.all([
             cleanCookies(tab),
             executeTabCleaner(tab)
         ]);
-    })).finally(displayNotification);
+    }));
 }
-
-browser.browserAction.onClicked.addListener(function () {
-    console.clear();
-    browser.tabs.query({
-        currentWindow: true,
-        active: true
-    }).then(cleanTabs).catch(error => console.error(error.message, error));
-});
