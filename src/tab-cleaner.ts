@@ -18,9 +18,11 @@
         }
     }
 
-    if (!'indexedDB' in window) {
+    if (!('indexedDB' in window)) {
+        // @ts-ignore
         window.indexedDB = window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
     }
+
     if (!window.indexedDB) {
         console.info('clear indexedDB', Object.keys(window.indexedDB));
         // It is not yet possible to discover related IndexDB database.

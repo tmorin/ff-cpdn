@@ -1,12 +1,20 @@
-async function cleanCookies(tab) {
+import Tab = browser.tabs.Tab;
+
+async function cleanCookies(tab: Tab) {
     console.info('cleanCookies -', tab.url, tab.cookieStoreId);
 
     let cookieStoreId = tab.cookieStoreId;
+    if (!cookieStoreId) {
+        return;
+    }
+
     try {
-        const contextualIdentity = await browser.contextualIdentities.get(tab.cookieStoreId);
-        cookieStoreId = contextualIdentity.cookieStoreId;
-        console.info(contextualIdentity);
-        console.info('cleanCookies - contextual identity available', contextualIdentity.cookieStoreId);
+        const contextualIdentity = await browser.contextualIdentities.get(cookieStoreId);
+        if (contextualIdentity) {
+            cookieStoreId = contextualIdentity.cookieStoreId;
+            console.info(contextualIdentity);
+            console.info('cleanCookies - contextual identity available', contextualIdentity.cookieStoreId);
+        }
     } catch (e) {
         console.debug('cleanCookies - no contextual identity available')
     }
@@ -15,6 +23,10 @@ async function cleanCookies(tab) {
     const allCookies = await browser.cookies.getAll({
         storeId: cookieStoreId
     });
+
+    if (!tab.url) {
+        return;
+    }
 
     // get tab's URL info
     const url = new URL(tab.url);
@@ -41,15 +53,15 @@ async function cleanCookies(tab) {
     }));
 }
 
-async function executeTabCleaner(tab) {
+async function executeTabCleaner(tab: Tab) {
     console.info('executeTabCleaner -', tab.url);
     await browser.tabs.executeScript(tab.id, {
         file: 'tab-cleaner.js'
     });
 }
 
-export async function cleanTabs(tabs) {
-    await Promise.all(tabs.map(tab => {
+export async function cleanTabs(tabs: Array<Tab>) {
+    await Promise.all(tabs.map((tab: Tab) => {
         return Promise.all([
             cleanCookies(tab),
             executeTabCleaner(tab)

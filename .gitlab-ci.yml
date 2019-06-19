@@ -11,7 +11,7 @@ node:12:
   image: node:12-alpine
   stage: build
   script:
-    - npm run test
+#    - npm run test
     - npm run build
     - npm run package
   artifacts:

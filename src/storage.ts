@@ -1,3 +1,5 @@
+import StorageObject = browser.storage.StorageObject;
+
 export const DEFAULT_SETTINGS = {
     browserActionMode: 'clean'
 };
@@ -14,7 +16,7 @@ export async function getData() {
     }, data)
 }
 
-export async function setData(data) {
+export async function setData(data: StorageObject) {
     try {
         await browser.storage.sync.set(data);
     } catch (e) {
