@@ -28,9 +28,15 @@ module.exports = {
         ]
     },
     plugins: [
-        new CopyWebpackPlugin([
-            {from: 'src', force: true, ignore: ['*.js', '*.jsx', '*.ts', '*.tsx', '*.scss', '*.ejs']},
-        ]),
+        new CopyWebpackPlugin({
+            patterns: [
+                {
+                    from: 'src',
+                    force: true,
+                    globOptions: {ignore: ['*.js', '*.jsx', '*.ts', '*.tsx', '*.scss', '*.ejs']}
+                },
+            ]
+        }),
         new HtmlWebpackPlugin({
             filename: 'options.tsx.html',
             template: 'src/options.ejs',
