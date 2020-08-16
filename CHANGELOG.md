@@ -1,6 +1,19 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## [1.5.0](https://github.com/tmorin/ff-cpdn/compare/v1.4.0...v1.5.0) (2020-08-16)
+
+
+### Features
+
+* **#2:** display a UI notification when cleaning is done ([b442dbf](https://github.com/tmorin/ff-cpdn/commit/b442dbf1d8e35fe264d1eb501719b58c26ea7801)), closes [#2](https://github.com/tmorin/ff-cpdn/issues/2)
+* **ui:** display popup on browser action ([eebbc72](https://github.com/tmorin/ff-cpdn/commit/eebbc729649beb64db7e1af5545ccd03cbbeaf1b))
+
+
+### Bug Fixes
+
+* skip icons because no refresh ([fba06f5](https://github.com/tmorin/ff-cpdn/commit/fba06f5c72b1b47af5b50c9aaf012ea0c0e2fe91))
 
 # [1.4.0](https://github.com/tmorin/ff-cpdn/compare/v1.3.2...v1.4.0) (2019-03-31)
 
