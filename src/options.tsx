@@ -47,7 +47,9 @@ function OptionsForm(options: Options) {
     return <form name="options">
         <fieldset name="scopes">
             <legend>Cleaning scope</legend>
-            {Object.keys(options.scopes).map(name => FeatureCheckbox(name, options.scopes[name]))}
+            {Object.keys(options.scopes)
+                .sort((a, b) => a.localeCompare(b))
+                .map(name => FeatureCheckbox(name, options.scopes[name]))}
         </fieldset>
     </form>
 }

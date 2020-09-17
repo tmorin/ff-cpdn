@@ -1,12 +1,12 @@
 export const DEFAULT_OPTIONS = {
     scopes: {
-        localStorage: true,
-        sessionStorage: true,
-        indexedDB: true,
-        serviceWorker: true,
         caches: true,
         cookies: true,
-        history: false
+        history: false,
+        indexedDB: true,
+        localStorage: true,
+        serviceWorker: true,
+        sessionStorage: true
     }
 }
 
