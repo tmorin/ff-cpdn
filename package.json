@@ -6,7 +6,7 @@
     "build": "webpack --config webpack.prod.js",
     "package": "web-ext lint && web-ext build",
     "postrelease": "git push --follow-tags",
-    "publish": "web-ext sign --channel=listed --api-key=$WEB_EXT_API_KEY --api-secret=$WEB_EXT_API_SECRET",
+    "publish": "web-ext sign --channel=listed --id=\"{7a07e802-6785-4e48-a29e-b81bdd5efbd3}\" --api-key=$WEB_EXT_API_KEY --api-secret=$WEB_EXT_API_SECRET",
     "release": "standard-version -a",
     "test": "jest",
     "watch": "webpack --config webpack.dev.js --watch",
