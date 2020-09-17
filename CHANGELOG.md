@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.6.2](https://github.com/tmorin/ff-cpdn/compare/v1.6.1...v1.6.2) (2020-09-17)
+
+
+### Bug Fixes
+
+* in the options form, scopes should already be ordered by name ([ada8379](https://github.com/tmorin/ff-cpdn/commit/ada83798e84c093b5e07411f44c5f85fffbc57c7)), closes [#9](https://github.com/tmorin/ff-cpdn/issues/9)
+
 ### [1.6.1](https://github.com/tmorin/ff-cpdn/compare/v1.6.0...v1.6.1) (2020-09-17)
 
 

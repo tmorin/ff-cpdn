@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Clear private data now!",
-  "version": "1.6.1",
+  "version": "1.6.2",
   "description": "Clear private data related to the current tab.",
   "icons": {
     "24": "icons/cpdn-24x24.png",
