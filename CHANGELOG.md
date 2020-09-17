@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.6.1](https://github.com/tmorin/ff-cpdn/compare/v1.6.0...v1.6.1) (2020-09-17)
+
+
+### Bug Fixes
+
+* fix Delivery workflow ([28ababe](https://github.com/tmorin/ff-cpdn/commit/28ababea11bc618c99ac5f7e89e5d10905c4e031))
+
 ## [1.6.0](https://github.com/tmorin/ff-cpdn/compare/v1.5.0...v1.6.0) (2020-09-17)
 
 
