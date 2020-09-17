@@ -40,6 +40,7 @@
     "@cycle/dom": "^22.8.0",
     "@cycle/run": "^5.4.0",
     "@fortawesome/fontawesome-free": "^5.14.0",
+    "@tmorin/udom": "^0.6.1",
     "@types/jest": "^26.0.14",
     "copy-webpack-plugin": "^6.1.0",
     "core-js": "^3.6.5",

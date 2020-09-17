@@ -6,3 +6,4 @@
 - localStorage
 - sessionStorage
 - serviceWorker
+- history

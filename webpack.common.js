@@ -33,15 +33,17 @@ module.exports = {
                 {
                     from: 'src',
                     force: true,
-                    globOptions: {ignore: ['*.js', '*.jsx', '*.ts', '*.tsx', '*.scss', '*.ejs']}
+                    globOptions: {
+                        ignore: ['**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx', '**/*.scss', '**/*.ejs']
+                    }
                 },
             ]
         }),
         new HtmlWebpackPlugin({
-            filename: 'options.tsx.html',
+            filename: 'options.html',
             template: 'src/options.ejs',
             pkg: pkg,
-            chunks: ['options.tsx'],
+            chunks: ['options'],
             hash: true
         }),
         new HtmlWebpackPlugin({

@@ -1,16 +1,22 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "jsx": "react",
+    "jsxFactory": "Snabbdom.createElement",
     "module": "commonjs",
-    "moduleResolution": "node",
-    "removeComments": true,
-    "strict": true,
-    "alwaysStrict": true,
-    "noUnusedLocals": true,
-    "noImplicitAny": true,
+    "target": "es6",
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "lib": [
+      "DOM",
+      "ES6"
+    ],
     "typeRoots": [
       "node_modules/@types",
       "node_modules/web-ext-types"
     ]
-  }
+  },
+  "exclude": [
+    "public"
+  ]
 }
