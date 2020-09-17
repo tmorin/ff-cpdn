@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.6.0](https://github.com/tmorin/ff-cpdn/compare/v1.5.0...v1.6.0) (2020-09-17)
+
+
+### Features
+
+* should optionally clean the history ([d84f434](https://github.com/tmorin/ff-cpdn/commit/d84f4346c5114588b4ad35de6eda472158b6fe86)), closes [#9](https://github.com/tmorin/ff-cpdn/issues/9)
+
 ## [1.5.0](https://github.com/tmorin/ff-cpdn/compare/v1.4.0...v1.5.0) (2020-08-16)
 
 
