@@ -28,5 +28,10 @@
     },
     "default_title": "Clear private data now!",
     "default_popup": "popup.html"
+  },
+  "applications": {
+    "gecko": {
+      "id": "{7a07e802-6785-4e48-a29e-b81bdd5efbd3}"
+    }
   }
 }
