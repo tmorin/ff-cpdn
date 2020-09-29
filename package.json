@@ -1,6 +1,6 @@
 {
   "name": "ff-cpdn",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "description": "Clear private data related to the current tab.",
   "scripts": {
     "build": "webpack --config webpack.prod.js",

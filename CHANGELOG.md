@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.7.1](https://github.com/tmorin/ff-cpdn/compare/v1.7.0...v1.7.1) (2020-09-29)
+
+
+### Bug Fixes
+
+* revert 070e9aca55285d7248618fe244e3242378b9ac0b ([c8ccd11](https://github.com/tmorin/ff-cpdn/commit/c8ccd11c1918dd8792773335bd5804751597babd))
+
 ## [1.7.0](https://github.com/tmorin/ff-cpdn/compare/v1.6.2...v1.7.0) (2020-09-29)
 
 
