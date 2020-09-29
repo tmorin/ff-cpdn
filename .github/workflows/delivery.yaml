@@ -26,3 +26,10 @@ jobs:
         env:
           WEB_EXT_API_KEY: ${{ secrets.WEB_EXT_API_KEY }}
           WEB_EXT_API_SECRET: ${{ secrets.WEB_EXT_API_SECRET }}
+      - name: Pack source code
+        run: zip -r cpdn-source.zip scripts src .gitignore *.md *json *.js
+      - name: Upload source code
+        uses: actions/upload-artifact@v2
+        with:
+          name: source code
+          path: cpdn-source.zip

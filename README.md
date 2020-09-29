@@ -7,3 +7,12 @@
 - sessionStorage
 - serviceWorker
 - history
+
+# Build
+
+Build the web-extension and run it with `web-ext`
+```shell script
+npm ci
+npm run build
+npm run web-ext
+```

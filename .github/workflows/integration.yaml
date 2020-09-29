@@ -20,3 +20,10 @@ jobs:
         run: npm ci
       - name: build package
         run: npm run build
+      - name: Pack source code
+        run: zip -r public/cpdn-source.zip scripts src .gitignore *.md *json *.js
+      - name: Upload source code
+        uses: actions/upload-artifact@v2
+        with:
+          name: source code
+          path: public/cpdn-source.zip
