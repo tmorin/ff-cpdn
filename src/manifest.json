@@ -33,5 +33,10 @@
     "gecko": {
       "id": "{7a07e802-6785-4e48-a29e-b81bdd5efbd3}"
     }
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{7a07e802-6785-4e48-a29e-b81bdd5efbd3}"
+    }
   }
 }
